@@ -2,10 +2,12 @@ package ro.pub.cs.systems.eim.colocviu1_245;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,11 +49,26 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         break;
+
+                    case (R.id.button2):
+                        Intent intent = new Intent(getApplicationContext(), Colocviul_245SecondaryActivity.class);
+                        String seq = result.getText().toString();
+                        intent.putExtra("sequence", seq);
+                        startActivityForResult(intent, 2);
+                        break;
                 }
             }
         };
 
         add.setOnClickListener(listener);
         compute.setOnClickListener(listener);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 2) {
+            Toast.makeText(this, "The activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
+        }
     }
 }
