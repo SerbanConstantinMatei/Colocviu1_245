@@ -62,6 +62,22 @@ public class MainActivity extends AppCompatActivity {
 
         add.setOnClickListener(listener);
         compute.setOnClickListener(listener);
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey("save")) {
+                result.setText(savedInstanceState.getString("save"));
+            } else {
+                result.setText(String.valueOf(""));
+            }
+        } else {
+            result.setText(String.valueOf(""));
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString("save", result.getText().toString());
     }
 
     @Override

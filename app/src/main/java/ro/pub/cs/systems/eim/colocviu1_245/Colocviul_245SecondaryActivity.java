@@ -20,7 +20,7 @@ public class Colocviul_245SecondaryActivity extends AppCompatActivity {
                 if (arr[i].equals("+")) {
                     continue;
                 }
-                
+
                 sum += Integer.valueOf(arr[i]);
             }
             setResult(sum);
